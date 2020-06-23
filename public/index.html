@@ -35,12 +35,16 @@
                                 <h1>nodeTODO {{ cos }} <span class="label label-info">{{ todos.length }}</span></h1>
                         </div>
 
+                        <button class="btn btn-primary" ng-class="{'btn-lg': mode == 'ALL'}" ng-click="mode='ALL'">ALL</button>
+                        <button class="btn btn-primary" ng-class="{'btn-lg': mode == 'DONE'}" ng-click="mode='DONE'">DONE</button>
+                        <button class="btn btn-primary" ng-class="{'btn-lg': mode == 'NOTDONE'}" ng-click="mode='NOTDONE'">NOT DONE</button>
+
                         <!-- TODO LIST -->
                         <div id="todo-list" class="row">
                                 <div class="col-sm-4 col-sm-offset-4">
 
                                         <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                                        <div class="checkbox" ng-repeat="todo in todos">
+                                        <div class="checkbox" ng-repeat="todo in filteredTodos(mode)">
                                                 <label>
                                                         <input type="checkbox" ng-click="updateTodo(todo._id)" ng-model="todo.done">
                                                         {{ todo.text }} <button ng-click="deleteTodo(todo._id)">X</button>      

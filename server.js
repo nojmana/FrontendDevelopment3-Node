@@ -42,7 +42,7 @@ app.get("/api/todos", function(req, res) {
 
     res.json(todos); // return all todos in JSON format
   });
-});
+});z
 
 app.get("/api/todos/:todo_id", function(req, res) {
   // use mongoose to get all todos in the database
