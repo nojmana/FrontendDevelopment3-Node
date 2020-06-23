@@ -42,7 +42,7 @@ app.get("/api/todos", function(req, res) {
 
     res.json(todos); // return all todos in JSON format
   });
-});z
+});
 
 app.get("/api/todos/:todo_id", function(req, res) {
   // use mongoose to get all todos in the database
@@ -79,6 +79,19 @@ app.post("/api/todos", function(req, res) {
   );
 });
 
+// update todo
+app.put("/api/todos/:todo_id", function(req, res) {
+  Todo.update(
+    { 
+      _id: req.params.todo_id
+    },
+    {
+      done: req.body.done
+    },
+    function(err, todo) {
+      if (err) res.send(err);
+    });
+});
 
 // delete a todo
 app.delete("/api/todos/:todo_id", function(req, res) {

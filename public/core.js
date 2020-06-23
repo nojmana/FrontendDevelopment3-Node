@@ -9,8 +9,6 @@ function mainController($scope, $http) {
 
   $scope.mode = ALL;
 
-  $scope.cos = "Ala ma kota";
-
   $scope.filteredTodos = (mode) => {
     let copy = [];
     switch(mode) {
@@ -62,7 +60,17 @@ function mainController($scope, $http) {
   };
 
   // update a todo after checking it
-  $scope.updateTodo = function(id) {};
+  $scope.updateTodo = function(item) {
+    $http
+      .put("/api/todos/" + item._id, item)
+      .success(function(data) {
+        $scope.todos = data;
+        console.log('succ', data)
+      })
+      .error(function(data) {
+        console.log('errr', data);
+      });
+  };
 
   // delete a todo after checking it
   $scope.deleteTodo = function(id) {

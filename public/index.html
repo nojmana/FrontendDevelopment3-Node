@@ -13,10 +13,12 @@
                 <!-- SCROLLS -->
                 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
                 <style>
+                
                         html                                         { overflow-y:scroll; }
                 body                                         { padding-top:50px; }
                 #todo-list                                 { margin-bottom:30px; }
                 #todo-form                                  { margin-bottom:50px; }
+
         </style>
 
                 <!-- SPELLS -->
@@ -32,7 +34,7 @@
 
                         <!-- HEADER AND TODO COUNT -->
                         <div class="jumbotron text-center">
-                                <h1>nodeTODO {{ cos }} <span class="label label-info">{{ todos.length }}</span></h1>
+                                <h1>nodeTODO <span class="label label-info">{{ todos.length }}</span></h1>
                         </div>
 
                         <button class="btn btn-primary" ng-class="{'btn-lg': mode == 'ALL'}" ng-click="mode='ALL'">ALL</button>
@@ -46,7 +48,7 @@
                                         <!-- LOOP OVER THE TODOS IN $scope.todos -->
                                         <div class="checkbox" ng-repeat="todo in filteredTodos(mode)">
                                                 <label>
-                                                        <input type="checkbox" ng-click="updateTodo(todo._id)" ng-model="todo.done">
+                                                        <input type="checkbox" ng-click="updateTodo(todo)" ng-model="todo.done">
                                                         {{ todo.text }} <button ng-click="deleteTodo(todo._id)">X</button>      
                                                 </label>
                                         </div>
@@ -68,12 +70,6 @@
                                                 <!-- createToDo() WILL CREATE NEW TODOS -->
                                                 <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
                                         </form>
-                                </div>
-                        </div>
-
-                        <div id="todo-form" class="row">
-                                <div class="col-sm-8 col-sm-offset-2 text-center">
-                                        <input type="text" class="form-control" ng-model="cos">
                                 </div>
                         </div>
                 </div>
